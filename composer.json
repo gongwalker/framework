@@ -1,0 +1,40 @@
+{
+    "name": "spark/framework",
+    "description": "An effective,fast,stable Framework for PHP.",
+    "keywords": [
+        "php",
+        "framework",
+        "effective",
+        "fast"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "wujunze",
+            "email": "itwujunze@gamil.com"
+        }
+    ],
+    "require": {
+        "php": "^7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Spark\\Framework\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Spark\\Framework\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": [
+            "phpunit"
+        ]
+    }
+
+}
