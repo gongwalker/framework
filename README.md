@@ -9,8 +9,8 @@
 
 An effective,fast,stable Framework for PHP
 
-## Base on [laravel-uuid](https://github.com/webpatser/laravel-uuid)
-## Thanks to  [laravel-uuid](https://github.com/webpatser/laravel-uuid)
+### Base on [smile](https://github.com/vimac/smile-framework)
+### Thanks to  [smile](https://github.com/vimac/smile-framework)
 
 ## Installation
 
