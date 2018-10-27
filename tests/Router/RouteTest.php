@@ -9,7 +9,7 @@
 namespace Spark\Framework\Tests\Router;
 
 
-use Spark\Framework\router\Route;
+use Spark\Framework\Router\Route;
 use Spark\Framework\Tests\TestCase;
 
 class RouteTest extends TestCase
