@@ -9,8 +9,8 @@
 namespace Spark\Framework\Router;
 
 
-use Spark\Framework\exceptions\RouteException;
-use Spark\Framework\helper\Map;
+use Spark\Framework\Exceptions\RouteException;
+use Spark\Framework\Helper\Map;
 
 
 class Route

@@ -8,7 +8,7 @@
 
 namespace Spark\Framework\Exceptions;
 
-use Exception;
+use \Exception;
 
 class RouteException extends Exception
 {

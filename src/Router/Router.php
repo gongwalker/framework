@@ -9,8 +9,8 @@
 namespace Spark\Framework\Router;
 
 
-use Spark\Framework\exceptions\RouterException;
-use Spark\Framework\interfaces\router\RouterInterface;
+use Spark\Framework\Exceptions\RouterException;
+use Spark\Framework\Interfaces\Router\RouterInterface;
 
 class Router implements RouterInterface
 {
