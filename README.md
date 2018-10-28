@@ -55,7 +55,10 @@ composer require "spark-php/framework"
 
 
 
-#### Thanks to  [smile](https://github.com/vimac/smile-framework)
+#### Thanks to
+[smile](https://github.com/vimac/smile-framework)   
+[Slim](https://slimframework.com)
+
 
 ## License
 MIT
