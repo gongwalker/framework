@@ -10,7 +10,6 @@
 
 namespace Spark\Framework;
 
-
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Spark\Framework\Di\Container;
@@ -23,7 +22,6 @@ use Spark\Framework\Router\Router;
 
 class Application
 {
-
     /**
      * @var ContainerInterface
      */

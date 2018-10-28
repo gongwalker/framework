@@ -16,8 +16,11 @@ use Spark\Framework\Helper\Map;
 class Route
 {
     const METHOD_GET = 'get';
+
     const METHOD_POST = 'post';
+
     const METHOD_PUT = 'put';
+
     const METHOD_DELETE = 'delete';
 
     const METHODS = [
@@ -304,6 +307,4 @@ class Route
         $regexUrlPattern = '/^' . $regexUrlPattern . '$/';
         $this->regexUrlPattern = $regexUrlPattern;
     }
-
-
 }

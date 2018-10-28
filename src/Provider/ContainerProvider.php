@@ -1,13 +1,14 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: wujunze
- * Date: 2018/10/28
- * Time: 4:10 PM
+ * This file is part of Spark Framework.
+ *
+ * @link     https://github.com/spark-php/framework
+ * @document https://github.com/spark-php/framework
+ * @contact  itwujunze@gmail.com
+ * @license  https://github.com/spark-php/framework
  */
 
 namespace Spark\Framework\Provider;
-
 
 use Spark\Framework\Interfaces\Provider\ContainerProviderInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -26,11 +27,9 @@ use Spark\Framework\Router\Router;
 /**
  * 框架默认的容器Provider
  *
- * @package Smile
  */
 class ContainerProvider implements ContainerProviderInterface
 {
-
     /**
      * 容器初始化Provider
      *
@@ -87,5 +86,4 @@ class ContainerProvider implements ContainerProviderInterface
             ->setAlias('dispatcher')
         );
     }
-
 }
