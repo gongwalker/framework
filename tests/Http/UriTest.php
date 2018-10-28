@@ -311,7 +311,7 @@ class UriTest extends TestCase
     }
 
     /**
-     * @covers \\Spark\Framework\Http\Uri::withBasePath
+     * @covers \Spark\Framework\Http\Uri::withBasePath
      * @expectedException InvalidArgumentException
      * @expectedExceptionMessage Uri path must be a string
      */
@@ -375,7 +375,7 @@ class UriTest extends TestCase
     }
 
     /**
-     * @covers \\Spark\Framework\Http\Uri::withPath
+     * @covers \Spark\Framework\Http\Uri::withPath
      * @expectedException InvalidArgumentException
      * @expectedExceptionMessage Uri path must be a string
      */
@@ -462,7 +462,7 @@ class UriTest extends TestCase
     }
 
     /**
-     * @covers \\Spark\Framework\Http\Uri::withFragment
+     * @covers \Spark\Framework\Http\Uri::withFragment
      * @expectedException InvalidArgumentException
      * @expectedExceptionMessage Uri fragment must be a string
      */
@@ -502,7 +502,7 @@ class UriTest extends TestCase
     }
 
     /**
-     * @covers \\Spark\Framework\Http\Uri::createFromString
+     * @covers \Spark\Framework\Http\Uri::createFromString
      */
     public function testCreateFromString()
     {
