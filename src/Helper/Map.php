@@ -9,56 +9,127 @@
 namespace Spark\Framework\Helper;
 
 
-use ArrayAccess;
+use Spark\Framework\Interfaces\Helper\MapInterface;
 
 /**
  * Class Map
  * @package Spark\Framework\Helper
  */
-class Map implements ArrayAccess
+class Map implements MapInterface
 {
-    private $input;
+    /**
+     * @var array
+     */
+    private $data;
 
-    public function __construct(array $input)
+    /**
+     * Map constructor.
+     * @param array $data
+     */
+    public function __construct(array $data = [])
     {
-        $this->input = $input;
+        $this->data = $data;
     }
 
+    /**
+     * @param $key
+     * @param null $defaultValue
+     * @return mixed|null
+     */
     public function get($key, $defaultValue = null)
     {
-        if (isset($this->input[$key])) {
-            return $this->input[$key];
+        if (isset($this->data[$key])) {
+            return $this->data[$key];
         } else {
             return $defaultValue;
         }
     }
 
+    /**
+     * @return array|mixed
+     */
     public function getAll()
     {
-        return $this->input;
+        return $this->data;
     }
 
+    /**
+     * @return array|mixed
+     */
+    public function keys()
+    {
+        return array_keys($this->data);
+    }
+
+    /**
+     * @param $key
+     * @return bool|mixed
+     */
+    public function has($key)
+    {
+        return array_key_exists($key, $this->data);
+    }
+
+    /**
+     * @param $key
+     * @param $value
+     * @return mixed|void
+     */
+    public function set($key, $value)
+    {
+        $this->data[$key] = $value;
+    }
+
+    /**
+     * @param $key
+     * @return mixed|void
+     */
+    public function remove($key)
+    {
+        unset($this->data[$key]);
+    }
+
+    /**
+     * @return mixed|void
+     */
+    public function clear()
+    {
+        $this->data = [];
+    }
+
+    /**
+     * @param mixed $offset
+     * @return bool|mixed
+     */
     public function offsetExists($offset)
     {
-        if (isset($this->input[$offset])) {
-            return true;
-        } else {
-            return false;
-        }
+        return $this->has($offset);
     }
 
+    /**
+     * @param mixed $offset
+     * @return mixed|null
+     */
     public function offsetGet($offset)
     {
         return $this->get($offset);
     }
 
+    /**
+     * @param mixed $offset
+     * @param mixed $value
+     */
     public function offsetSet($offset, $value)
     {
-        return null;
+        $this->set($offset, $value);
     }
 
+    /**
+     * @param mixed $offset
+     */
     public function offsetUnset($offset)
     {
-        return null;
+        $this->remove($offset);
     }
 }
+
