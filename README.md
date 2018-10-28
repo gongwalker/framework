@@ -26,7 +26,8 @@ composer require "spark-php/framework"
 - [x] Di 
 - [x] Router
 - [x] Http
-- [ ] Dispatcher
+- [x] Dispatcher
+- [x] Application
 - [ ] Db
 - [ ] Env
 - [ ] Config
