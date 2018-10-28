@@ -16,18 +16,15 @@ use Spark\Framework\Helper\Map;
 class Route
 {
     const METHOD_GET = 'get';
-
     const METHOD_POST = 'post';
-
     const METHOD_PUT = 'put';
-
     const METHOD_DELETE = 'delete';
 
     const METHODS = [
-        self::METHOD_GET,
-        self::METHOD_POST,
-        self::METHOD_PUT,
-        self::METHOD_DELETE,
+      self::METHOD_GET,
+      self::METHOD_POST,
+      self::METHOD_PUT,
+      self::METHOD_DELETE,
     ];
 
     /**
@@ -126,6 +123,24 @@ class Route
     }
 
     /**
+     * 获取执行目标
+     *
+     * @return mixed
+     */
+    public function getTarget()
+    {
+        return $this->target;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUrlRule()
+    {
+        return $this->urlRule;
+    }
+
+    /**
      * 设置名称
      *
      * @param string $name
@@ -153,7 +168,6 @@ class Route
      * 映射方法到 URL 规则
      * @param $methods
      * @param $urlRule
-     * @throws RouteException
      */
     public function map($methods, $urlRule)
     {
@@ -290,4 +304,6 @@ class Route
         $regexUrlPattern = '/^' . $regexUrlPattern . '$/';
         $this->regexUrlPattern = $regexUrlPattern;
     }
+
+
 }
