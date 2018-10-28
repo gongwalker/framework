@@ -9,9 +9,6 @@
 
 An effective,fast,stable Framework for PHP
 
-### Base on [smile](https://github.com/vimac/smile-framework)
-### Thanks to  [smile](https://github.com/vimac/smile-framework)
-
 ## Installation
 
 Installation with composer
@@ -19,3 +16,41 @@ Installation with composer
 ```shell
 composer require "spark-php/framework"
 ```
+
+
+
+## Roadmap
+
+### Framework
+
+- [x] Di 
+- [x] Router
+- [ ] Http
+- [ ] Dispatcher
+- [ ] Db
+- [ ] Env
+- [ ] Config
+- [ ] Command
+- [ ] JobQueue
+
+
+## component
+
+- [ ] dev-server
+- [ ] swoole-server
+- [ ] rpc
+- [ ] rpc-client
+- [ ] rpc-server
+
+ 
+## advance
+
+- [ ] Injection
+- [ ] Generate
+- [ ] Injection
+- [ ] More
+
+
+
+
+#### Thanks to  [smile](https://github.com/vimac/smile-framework)
