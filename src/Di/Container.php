@@ -1,9 +1,11 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: wujunze
- * Date: 2018/10/27
- * Time: 3:35 PM
+ * This file is part of Spark Framework.
+ *
+ * @link     https://github.com/spark-php/framework
+ * @document https://github.com/spark-php/framework
+ * @contact  itwujunze@gmail.com
+ * @license  https://github.com/spark-php/framework
  */
 
 namespace Spark\Framework\Di;
@@ -41,12 +43,10 @@ class Container implements ContainerInterface
      */
     private $autowiredNamespaces = [];
 
-    /**
-     * 给容器设置一个元素
-     *
-     * @param ElementDefinition $definition 元素定义
-     * @return void
+    /**给容器设置一个元素
+     * @param ElementDefinition $definition
      * @throws ContainerException
+     * @throws \ReflectionException
      */
     public function set(ElementDefinition $definition)
     {
@@ -78,8 +78,6 @@ class Container implements ContainerInterface
         $this->initializeEagerDefinition($definition);
     }
 
-
-
     /**
      * 根据类型从容器获得一个元素产生的实例
      *
@@ -92,7 +90,6 @@ class Container implements ContainerInterface
     {
         return $this->buildByTypeRecursive($type);
     }
-
 
     /**
      * 从容器获得一个元素产生的实例
@@ -130,7 +127,6 @@ class Container implements ContainerInterface
         $this->autowiredNamespaces[] = $namespace;
         return true;
     }
-
 
     /**
      * 递归的创建实例
@@ -175,7 +171,6 @@ class Container implements ContainerInterface
         }
         return $result;
     }
-
 
     /**
      * 递归的创建实例
@@ -247,7 +242,6 @@ class Container implements ContainerInterface
         }
     }
 
-
     /**
      * 断言某个别名是一个有效的字符串, 如果无效, 则抛出异常
      * 一个别名只允许被设置一次
@@ -277,7 +271,6 @@ class Container implements ContainerInterface
             throw new ContainerException('基本类型的元素定义必须设置别名');
         }
     }
-
 
     /**
      * 断言某个命名空间有效
@@ -331,7 +324,6 @@ class Container implements ContainerInterface
         return true;
     }
 
-
     /**
      * 校验没有循环依赖
      *
@@ -372,9 +364,7 @@ class Container implements ContainerInterface
                 throw new ContainerException(sprintf('期望返回值类型: %s, 实际返回值类型: %s', $definition->getType(), get_class($buildResult)));
             }
         }
-
     }
-
 
     /**
      * 实例化立即初始化的元素定义
@@ -388,7 +378,6 @@ class Container implements ContainerInterface
     {
         // 只初始化需要立即初始化的元素定义
         if ($definition->isEager()) {
-
             if (!$definition->isInstanceNull()) {
                 //如果已经存在instance, 则跳过
                 return $definition->getInstance();
@@ -424,7 +413,6 @@ class Container implements ContainerInterface
             $this->assertBuilderAvailable($definition);
         }
     }
-
 
     /**
      * 调用Builder, 实例化方法
@@ -482,5 +470,4 @@ class Container implements ContainerInterface
 
         return $result;
     }
-
 }

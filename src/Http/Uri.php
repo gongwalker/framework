@@ -1,10 +1,11 @@
 <?php
 /**
- * Slim Framework (https://slimframework.com)
+ * This file is part of Spark Framework.
  *
- * @link      https://github.com/slimphp/Slim
- * @copyright Copyright (c) 2011-2016 Josh Lockhart
- * @license   https://github.com/slimphp/Slim/blob/3.x/LICENSE.md (MIT License)
+ * @link     https://github.com/spark-php/framework
+ * @document https://github.com/spark-php/framework
+ * @contact  itwujunze@gmail.com
+ * @license  https://github.com/spark-php/framework
  */
 
 namespace Spark\Framework\Http;
@@ -119,8 +120,7 @@ class Uri implements UriInterface
         $fragment = '',
         $user = '',
         $password = ''
-    )
-    {
+    ) {
         $this->scheme = $this->filterScheme($scheme);
         $this->host = $host;
         $this->port = $this->filterPort($port);

@@ -1,17 +1,17 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: wujunze
- * Date: 2018/10/27
- * Time: 3:55 PM
+ * This file is part of Spark Framework.
+ *
+ * @link     https://github.com/spark-php/framework
+ * @document https://github.com/spark-php/framework
+ * @contact  itwujunze@gmail.com
+ * @license  https://github.com/spark-php/framework
  */
 
 namespace Spark\Framework\Tests;
-
 
 use \PHPUnit\Framework\TestCase as BaseCase;
 
 class TestCase extends BaseCase
 {
-
 }

@@ -1,9 +1,11 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: wujunze
- * Date: 2018/10/27
- * Time: 3:57 PM
+ * This file is part of Spark Framework.
+ *
+ * @link     https://github.com/spark-php/framework
+ * @document https://github.com/spark-php/framework
+ * @contact  itwujunze@gmail.com
+ * @license  https://github.com/spark-php/framework
  */
 
 namespace Spark\Framework\Tests\Di;
@@ -13,8 +15,6 @@ use Spark\Framework\Di\Container;
 use Spark\Framework\Di\ElementDefinition;
 use Spark\Framework\Interfaces\Di\ContainerInterface;
 use Spark\Framework\Tests\fixtrues\TestCircleDepClassA;
-use Spark\Framework\Tests\fixtrues\TestCircleDepClassB;
-use Spark\Framework\Tests\fixtrues\TestCircleDepClassC;
 use Spark\Framework\Tests\fixtrues\TestClassA;
 use Spark\Framework\Tests\fixtrues\TestClassB;
 use Spark\Framework\Tests\fixtrues\TestClassC;
@@ -35,8 +35,6 @@ class ContainerTest extends TestCase
         ];
     }
 
-
-
     /**
      *
      * 测试命名空间自动组装
@@ -47,11 +45,10 @@ class ContainerTest extends TestCase
      */
     public function testAutoWired(ContainerInterface $container)
     {
-        $container->enableAutoWiredForNamespace("Spark\\Framework\\Tests\\fixtrues");
+        $container->enableAutoWiredForNamespace('Spark\\Framework\\Tests\\fixtrues');
         $object = $container->getByType(TestClassA::class);
         $this->assertInstanceOf(TestClassA::class, $object);
     }
-
 
     /**
      * 测试立即初始化
@@ -81,10 +78,7 @@ class ContainerTest extends TestCase
         );
         $object = $container->getByType(TestClassC::class);
         $this->assertInstanceOf(TestClassB::class, $object);
-
     }
-
-
 
     /**
      *  测试延迟初始化
@@ -126,7 +120,6 @@ class ContainerTest extends TestCase
         $this->assertNotSame($obj1, $obj2);
     }
 
-
     /**
      * 测试单例作用域
      *
@@ -149,7 +142,6 @@ class ContainerTest extends TestCase
         $this->assertSame($obj1, $obj2);
     }
 
-
     /**
      * 测试循环引用报错
      *
@@ -161,10 +153,9 @@ class ContainerTest extends TestCase
     {
         $this->expectException(ContainerException::class);
         $this->expectExceptionMessageRegExp('/循环/');
-        $container->enableAutoWiredForNamespace("Spark\\Framework\\Tests\\fixtrues");
+        $container->enableAutoWiredForNamespace('Spark\\Framework\\Tests\\fixtrues');
         $container->getByType(TestCircleDepClassA::class);
     }
-
 
     /**
      * 测试别名

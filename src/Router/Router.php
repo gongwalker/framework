@@ -1,13 +1,14 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: wujunze
- * Date: 2018/10/27
- * Time: 7:24 PM
+ * This file is part of Spark Framework.
+ *
+ * @link     https://github.com/spark-php/framework
+ * @document https://github.com/spark-php/framework
+ * @contact  itwujunze@gmail.com
+ * @license  https://github.com/spark-php/framework
  */
 
 namespace Spark\Framework\Router;
-
 
 use Spark\Framework\Exceptions\RouterException;
 use Spark\Framework\Interfaces\Router\RouterInterface;
@@ -92,8 +93,9 @@ class Router implements RouterInterface
      * 根据路由规则名称和参数返回路径 (可用于 URL 生成)
      *
      * @param string $name
-     * @param array|null $parts
+     * @param array $parts
      * @return string
+     * @throws RouterException
      */
     public function generatePath($name, array $parts = [])
     {
@@ -116,5 +118,4 @@ class Router implements RouterInterface
             throw new RouterException(sprintf('不存在的路由规则名称: %s', $name));
         }
     }
-
 }

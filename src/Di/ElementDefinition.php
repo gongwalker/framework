@@ -1,29 +1,36 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: wujunze
- * Date: 2018/10/27
- * Time: 3:40 PM
+ * This file is part of Spark Framework.
+ *
+ * @link     https://github.com/spark-php/framework
+ * @document https://github.com/spark-php/framework
+ * @contact  itwujunze@gmail.com
+ * @license  https://github.com/spark-php/framework
  */
 
 namespace Spark\Framework\Di;
-
 
 /**
  * 依赖注入容器中的元素的实现类
  */
 class ElementDefinition
 {
-
     const SCOPE_PROTOTYPE = 'prototype';
+
     const SCOPE_SINGLETON = 'singleton';
 
     const TYPE_STRING = 'string';
+
     const TYPE_INT = 'int';
+
     const TYPE_FLOAT = 'float';
+
     const TYPE_BOOL = 'bool';
+
     const TYPE_ARRAY = 'array';
+
     const TYPE_CALLABLE = 'callable';
+
     const BASE_TYPES = [self::TYPE_STRING, self::TYPE_INT, self::TYPE_FLOAT, self::TYPE_BOOL, self::TYPE_ARRAY, self::TYPE_CALLABLE];
 
     const NAME_OF_CONSTRUCTOR = '__construct';
@@ -32,26 +39,32 @@ class ElementDefinition
      * @var string
      */
     private $alias;
+
     /**
      * @var integer
      */
     private $scope = self::SCOPE_PROTOTYPE;
+
     /**
      * @var boolean
      */
     private $deferred = true;
+
     /**
      * @var callable
      */
     private $builder;
+
     /**
      * @var string
      */
     private $type;
+
     /**
      * @var mixed
      */
     private $instance;
+
     /**
      * @var bool
      */
@@ -119,7 +132,6 @@ class ElementDefinition
     {
         return $this->deferred;
     }
-
 
     /**
      * 返回这个定义是否立即初始化
@@ -224,6 +236,7 @@ class ElementDefinition
         $this->deferred = false;
         return $this;
     }
+
     /**
      * 设置创建实例的回调函数
      * @param callable $builder
@@ -258,5 +271,4 @@ class ElementDefinition
         $this->setSingletonScope();
         return $this;
     }
-
 }

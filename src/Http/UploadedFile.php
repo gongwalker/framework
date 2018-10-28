@@ -1,10 +1,11 @@
 <?php
 /**
- * Slim Framework (https://slimframework.com)
+ * This file is part of Spark Framework.
  *
- * @link      https://github.com/slimphp/Slim
- * @copyright Copyright (c) 2011-2016 Josh Lockhart
- * @license   https://github.com/slimphp/Slim/blob/3.x/LICENSE.md (MIT License)
+ * @link     https://github.com/spark-php/framework
+ * @document https://github.com/spark-php/framework
+ * @contact  itwujunze@gmail.com
+ * @license  https://github.com/spark-php/framework
  */
 namespace Spark\Framework\Http;
 
@@ -32,42 +33,49 @@ class UploadedFile implements UploadedFileInterface
      * @var string
      */
     public $file;
+
     /**
      * The client-provided file name.
      *
      * @var string
      */
     protected $name;
+
     /**
      * The client-provided media type of the file.
      *
      * @var string
      */
     protected $type;
+
     /**
      * The size of the file in bytes.
      *
      * @var int
      */
     protected $size;
+
     /**
      * A valid PHP UPLOAD_ERR_xxx code for the file upload.
      *
      * @var int
      */
     protected $error = UPLOAD_ERR_OK;
+
     /**
      * Indicates if the upload is from a SAPI environment.
      *
      * @var bool
      */
     protected $sapi = false;
+
     /**
      * An optional StreamInterface wrapping the file resource.
      *
      * @var StreamInterface
      */
     protected $stream;
+
     /**
      * Indicates if the uploaded file has already been moved.
      *

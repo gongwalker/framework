@@ -1,13 +1,14 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: wujunze
- * Date: 2018/10/28
- * Time: 8:43 AM
+ * This file is part of Spark Framework.
+ *
+ * @link     https://github.com/spark-php/framework
+ * @document https://github.com/spark-php/framework
+ * @contact  itwujunze@gmail.com
+ * @license  https://github.com/spark-php/framework
  */
 
 namespace Spark\Framework\Interfaces\Http;
-
 
 use Spark\Framework\Interfaces\Helper\MapInterface;
 
@@ -17,7 +18,6 @@ use Spark\Framework\Interfaces\Helper\MapInterface;
  */
 interface HeadersInterface extends MapInterface
 {
-
     /**
      * @param $key
      * @param $value
@@ -30,5 +30,4 @@ interface HeadersInterface extends MapInterface
      * @return mixed
      */
     public function normalizeKey($key);
-
 }

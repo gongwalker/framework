@@ -1,16 +1,17 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: wujunze
- * Date: 2018/10/27
- * Time: 3:33 PM
+ * This file is part of Spark Framework.
+ *
+ * @link     https://github.com/spark-php/framework
+ * @document https://github.com/spark-php/framework
+ * @contact  itwujunze@gmail.com
+ * @license  https://github.com/spark-php/framework
  */
 
 namespace Spark\Framework\Interfaces\Di;
 
 use Spark\Framework\Di\ElementDefinition;
 use Spark\Framework\Exceptions\ContainerException;
-
 
 /**
  * 依赖注入容器的接口
@@ -20,7 +21,6 @@ use Spark\Framework\Exceptions\ContainerException;
  */
 interface ContainerInterface
 {
-
     /**
      * 给容器设置一个元素
      *
@@ -67,5 +67,4 @@ interface ContainerInterface
      * @throws ContainerException
      */
     public function enableAutoWiredForNamespace($namespace);
-
 }

@@ -1,10 +1,17 @@
 <?php
+/**
+ * This file is part of Spark Framework.
+ *
+ * @link     https://github.com/spark-php/framework
+ * @document https://github.com/spark-php/framework
+ * @contact  itwujunze@gmail.com
+ * @license  https://github.com/spark-php/framework
+ */
 namespace Spark\Framework\Http;
 
 use Spark\Framework\Common\Environment;
 use Spark\Framework\Interfaces\Http\HeadersInterface;
 use Spark\Framework\Helper\Map;
-
 
 /**
  * Headers
@@ -67,7 +74,6 @@ class Headers extends Map implements HeadersInterface
      *
      * @return Environment
      */
-
     public static function determineAuthorization(Environment $environment)
     {
         $authorization = $environment->get('HTTP_AUTHORIZATION');

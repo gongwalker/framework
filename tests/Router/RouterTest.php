@@ -1,13 +1,14 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: wujunze
- * Date: 2018/10/27
- * Time: 7:33 PM
+ * This file is part of Spark Framework.
+ *
+ * @link     https://github.com/spark-php/framework
+ * @document https://github.com/spark-php/framework
+ * @contact  itwujunze@gmail.com
+ * @license  https://github.com/spark-php/framework
  */
 
 namespace Spark\Framework\Tests\Router;
-
 
 use Spark\Framework\Router\Route;
 use Spark\Framework\Router\Router;
@@ -81,7 +82,6 @@ class RouterTest extends TestCase
         $route = $router->resolve('GET', '/a/index');
         $this->assertSame($route3, $route);
     }
-
 
     /**
      * @dataProvider routerProvider
