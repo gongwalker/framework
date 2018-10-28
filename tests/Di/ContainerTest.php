@@ -22,7 +22,6 @@ use Spark\Framework\Tests\TestCase;
 
 /**
  * Class DefaultContainerImplTest
- * @package Smile\Test\DI
  */
 class ContainerTest extends TestCase
 {

@@ -11,8 +11,6 @@ namespace Spark\Framework\Di;
 
 /**
  * 依赖注入容器中的元素的实现类
- *
- * @package Smile\Di
  */
 class ElementDefinition
 {
