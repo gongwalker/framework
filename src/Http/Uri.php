@@ -102,13 +102,13 @@ class Uri implements UriInterface
     /**
      * Create new Uri.
      *
-     * @param string $scheme Uri scheme.
-     * @param string $host Uri host.
-     * @param int $port Uri port number.
-     * @param string $path Uri path.
-     * @param string $query Uri query string.
+     * @param string $scheme   Uri scheme.
+     * @param string $host     Uri host.
+     * @param int    $port     Uri port number.
+     * @param string $path     Uri path.
+     * @param string $query    Uri query string.
      * @param string $fragment Uri fragment.
-     * @param string $user Uri user.
+     * @param string $user     Uri user.
      * @param string $password Uri password.
      */
     public function __construct(
@@ -175,25 +175,27 @@ class Uri implements UriInterface
         $username = $env->get('PHP_AUTH_USER', '');
         $password = $env->get('PHP_AUTH_PW', '');
 
-        // Authority: Host
+        // Authority: Host and Port
         if ($env->has('HTTP_HOST')) {
             $host = $env->get('HTTP_HOST');
+            // set a port default
+            $port = null;
         } else {
             $host = $env->get('SERVER_NAME');
+            // set a port default
+            $port = (int)$env->get('SERVER_PORT', 80);
         }
 
-        // Authority: Port
-        $port = (int)$env->get('SERVER_PORT', 80);
         if (preg_match('/^(\[[a-fA-F0-9:.]+\])(:\d+)?\z/', $host, $matches)) {
             $host = $matches[1];
 
-            if ($matches[2]) {
-                $port = (int)substr($matches[2], 1);
+            if (isset($matches[2])) {
+                $port = (int) substr($matches[2], 1);
             }
         } else {
             $pos = strpos($host, ':');
             if ($pos !== false) {
-                $port = (int)substr($host, $pos + 1);
+                $port = (int) substr($host, $pos + 1);
                 $host = strstr($host, ':', true);
             }
         }
@@ -340,7 +342,7 @@ class Uri implements UriInterface
         $host = $this->getHost();
         $port = $this->getPort();
 
-        return ($userInfo ? $userInfo . '@' : '') . $host . ($port !== null ? ':' . $port : '');
+        return ($userInfo !== '' ? $userInfo . '@' : '') . $host . ($port !== null ? ':' . $port : '');
     }
 
     /**
@@ -360,7 +362,7 @@ class Uri implements UriInterface
      */
     public function getUserInfo()
     {
-        return $this->user . ($this->password ? ':' . $this->password : '');
+        return $this->user . ($this->password !== '' ? ':' . $this->password : '');
     }
 
     /**
@@ -380,10 +382,31 @@ class Uri implements UriInterface
     public function withUserInfo($user, $password = null)
     {
         $clone = clone $this;
-        $clone->user = $user;
-        $clone->password = $password ? $password : '';
+        $clone->user = $this->filterUserInfo($user);
+        if ('' !== $clone->user) {
+            $clone->password = !in_array($password, [null, ''], true) ? $this->filterUserInfo($password) : '';
+        } else {
+            $clone->password = '';
+        }
 
         return $clone;
+    }
+
+    /**
+     * Filters the user info string.
+     *
+     * @param string $query The raw uri query string.
+     * @return string The percent-encoded query string.
+     */
+    protected function filterUserInfo($query)
+    {
+        return preg_replace_callback(
+            '/(?:[^a-zA-Z0-9_\-\.~!\$&\'\(\)\*\+,;=]+|%(?![A-Fa-f0-9]{2}))/u',
+            function ($match) {
+                return rawurlencode($match[0]);
+            },
+            $query
+        );
     }
 
     /**
@@ -793,11 +816,11 @@ class Uri implements UriInterface
 
         $path = $basePath . '/' . ltrim($path, '/');
 
-        return ($scheme ? $scheme . ':' : '')
-            . ($authority ? '//' . $authority : '')
+        return ($scheme !== '' ? $scheme . ':' : '')
+            . ($authority !== '' ? '//' . $authority : '')
             . $path
-            . ($query ? '?' . $query : '')
-            . ($fragment ? '#' . $fragment : '');
+            . ($query !== '' ? '?' . $query : '')
+            . ($fragment !== '' ? '#' . $fragment : '');
     }
 
     /**
@@ -815,11 +838,11 @@ class Uri implements UriInterface
         $authority = $this->getAuthority();
         $basePath = $this->getBasePath();
 
-        if ($authority && substr($basePath, 0, 1) !== '/') {
+        if ($authority !== '' && substr($basePath, 0, 1) !== '/') {
             $basePath = $basePath . '/' . $basePath;
         }
 
-        return ($scheme ? $scheme . ':' : '')
+        return ($scheme !== '' ? $scheme . ':' : '')
             . ($authority ? '//' . $authority : '')
             . rtrim($basePath, '/');
     }

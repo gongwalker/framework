@@ -10,13 +10,13 @@
 
 namespace Spark\Framework\Interfaces\Http;
 
-use Spark\Framework\Interfaces\Helper\MapInterface;
+use Spark\Framework\Interfaces\Helper\CollectionInterface;
 
 /**
  * Interface HeadersInterface
  * @package Spark\Framework\Interfaces\Http
  */
-interface HeadersInterface extends MapInterface
+interface HeadersInterface extends CollectionInterface
 {
     /**
      * @param $key

@@ -21,7 +21,7 @@ class Map implements MapInterface
     /**
      * @var array
      */
-    private $data;
+    protected $data;
 
     /**
      * Map constructor.

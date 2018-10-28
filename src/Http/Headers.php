@@ -10,8 +10,8 @@
 namespace Spark\Framework\Http;
 
 use Spark\Framework\Common\Environment;
+use Spark\Framework\Helper\Collection;
 use Spark\Framework\Interfaces\Http\HeadersInterface;
-use Spark\Framework\Helper\Map;
 
 /**
  * Headers
@@ -26,7 +26,7 @@ use Spark\Framework\Helper\Map;
  * you request a header value, you receive an array of values
  * for that header.
  */
-class Headers extends Map implements HeadersInterface
+class Headers extends Collection implements HeadersInterface
 {
     /**
      * Special HTTP headers that do not have the "HTTP_" prefix
@@ -46,7 +46,7 @@ class Headers extends Map implements HeadersInterface
      * Create new headers collection with data extracted from
      * the application Environment object
      *
-     * @param Environment $environment The Slim application Environment
+     * @param Environment $environment The Spark application Environment
      *
      * @return self
      */
@@ -70,7 +70,7 @@ class Headers extends Map implements HeadersInterface
      * If HTTP_AUTHORIZATION does not exist tries to get it from
      * getallheaders() when available.
      *
-     * @param Environment $environment The Slim application Environment
+     * @param Environment $environment The Spark application Environment
      *
      * @return Environment
      */
@@ -96,9 +96,9 @@ class Headers extends Map implements HeadersInterface
      *
      * @return array
      */
-    public function getAll()
+    public function all()
     {
-        $all = parent::getAll();
+        $all = parent::all();
         $out = [];
         foreach ($all as $key => $props) {
             $out[$props['originalKey']] = $props['value'];

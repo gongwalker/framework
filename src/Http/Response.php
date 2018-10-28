@@ -119,6 +119,13 @@ class Response extends Message implements ResponseInterface
     ];
 
     /**
+     * EOL characters used for HTTP response.
+     *
+     * @var string
+     */
+    const EOL = "\n";
+
+    /**
      * Create new Http response.
      *
      * @param int                   $status  The response status code.
@@ -241,6 +248,33 @@ class Response extends Message implements ResponseInterface
             return static::$messages[$this->status];
         }
         return '';
+    }
+
+    /*******************************************************************************
+     * Headers
+     ******************************************************************************/
+
+    /**
+     * Return an instance with the provided value replacing the specified header.
+     *
+     * If a Location header is set and the status code is 200, then set the status
+     * code to 302 to mimic what PHP does. See https://github.com/slimphp/Slim/issues/1730
+     *
+     * @param string $name Case-insensitive header field name.
+     * @param string|string[] $value Header value(s).
+     * @return static
+     * @throws \InvalidArgumentException for invalid header names or values.
+     */
+    public function withHeader($name, $value)
+    {
+        $clone = clone $this;
+        $clone->headers->set($name, $value);
+
+        if ($clone->getStatusCode() === StatusCode::HTTP_OK && strtolower($name) === 'location') {
+            $clone = $clone->withStatus(StatusCode::HTTP_FOUND);
+        }
+
+        return $clone;
     }
 
     /*******************************************************************************
@@ -457,7 +491,7 @@ class Response extends Message implements ResponseInterface
     public function __toString()
     {
         $output = sprintf(
-            'Http/%s %s %s',
+            'HTTP/%s %s %s',
             $this->getProtocolVersion(),
             $this->getStatusCode(),
             $this->getReasonPhrase()
