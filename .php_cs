@@ -25,6 +25,7 @@ return PhpCsFixer\Config::create()
         'class_attributes_separation' => true,
         'no_unused_imports' => true,
         'standardize_not_equals' => true,
+        'declare_strict_types' => true,
     ])
     ->setFinder(
         PhpCsFixer\Finder::create()

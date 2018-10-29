@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 /**
  * This file is part of Spark Framework.
  *
@@ -459,7 +460,7 @@ class Stream implements StreamInterface
      */
     public function write($string)
     {
-        if (!$this->isWritable() || ($written = fwrite($this->stream, $string)) === false) {
+        if (!$this->isWritable() || ($written = fwrite($this->stream, (string)$string)) === false) {
             throw new RuntimeException('Could not write to stream');
         }
 
