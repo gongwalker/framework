@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 /**
  * This file is part of Spark Framework.
  *
@@ -1033,7 +1034,7 @@ class Request extends Message implements ServerRequestInterface
         $mediaType = $this->getMediaType();
 
         // look for a media type with a structured syntax suffix (RFC 6839)
-        $parts = explode('+', $mediaType);
+        $parts = explode('+', (string)$mediaType);
         if (count($parts) >= 2) {
             $mediaType = 'application/' . $parts[count($parts)-1];
         }
