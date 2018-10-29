@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 /**
  * This file is part of Spark Framework.
  *
@@ -449,7 +450,7 @@ class Container implements ContainerInterface
             $reflectionParamClass = $reflectionParam->getClass();
             $paramClassName = isset($reflectionParamClass) ? $reflectionParamClass->getName() : null;
 
-            if (class_exists($paramClassName, true)) {
+            if (class_exists((string)$paramClassName, true)) {
                 // 找到类型走 typeMap
                 $paramInstance = $this->buildByTypeRecursive($paramClassName, $stack);
                 $realParams[$reflectionParam->getPosition()] = $paramInstance;

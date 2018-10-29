@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 /**
  * This file is part of Spark Framework.
  *
@@ -210,9 +211,9 @@ class Uri implements UriInterface
 
         $basePath = '';
         $virtualPath = $requestUri;
-        if (stripos($requestUri, $requestScriptName) === 0) {
+        if (stripos((string)$requestUri, $requestScriptName) === 0) {
             $basePath = $requestScriptName;
-        } elseif ($requestScriptDir !== '/' && stripos($requestUri, $requestScriptDir) === 0) {
+        } elseif ($requestScriptDir !== '/' && stripos((string)$requestUri, $requestScriptDir) === 0) {
             $basePath = $requestScriptDir;
         }
 
