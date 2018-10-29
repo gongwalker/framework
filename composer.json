@@ -15,7 +15,6 @@
             "email": "itwujunze@gamil.com"
         }
     ],
-    "minimum-stability": "stable",
     "require": {
         "php": "^7.1",
         "ext-json": "*",
